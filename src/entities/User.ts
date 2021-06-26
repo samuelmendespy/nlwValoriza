@@ -1,7 +1,9 @@
+import { Exclude } from "class-transformer";
 import {
   Entity,
   PrimaryColumn,
-  Column, CreateDateColumn,
+  Column,
+  CreateDateColumn,
   UpdateDateColumn,
 } from "typeorm";
 import { v4 as uuid } from "uuid";
@@ -22,6 +24,11 @@ class User {
   // Coluna de status de privilégio de administrador
   @Column()
   admin: boolean;
+
+  // Coluna adicionada depois de migration para senha
+  @Exclude()
+  @Column()
+  password: string;
 
   // Coluna de data de criação
   @CreateDateColumn()
